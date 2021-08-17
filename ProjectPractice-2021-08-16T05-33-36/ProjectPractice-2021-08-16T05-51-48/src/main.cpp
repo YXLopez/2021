@@ -17,8 +17,8 @@ using namespace vex;
 // A global instance of competition
 competition Competition;
 vex::controller Controller = vex::controller();
-vex::motor LeftTopMotor = vex::motor(vex::PORT1, true);
-vex::motor LeftBottomMotor = vex::motor(vex::PORT2, true);
+vex::motor LeftTopMotor = vex::motor(vex::PORT1);
+vex::motor LeftBottomMotor = vex::motor(vex::PORT2);
 vex::motor RightTopMotor = vex::motor(vex::PORT10);
 vex::motor RightBottomMotor = vex::motor(vex::PORT9);
 // define your global instances of motors and other devices here
