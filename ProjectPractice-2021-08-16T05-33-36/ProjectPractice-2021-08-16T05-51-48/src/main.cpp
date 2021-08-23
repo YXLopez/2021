@@ -19,6 +19,7 @@ competition Competition;
 vex::controller Controller = vex::controller();
 vex::motor LeftTopMotor = vex::motor(vex::PORT1);
 vex::motor RightTopMotor = vex::motor(vex::PORT10);
+vex::motor LeftMogo = vex::motor(vex::PORT9 + PORT2);
 // define your global instances of motors and other devices here
 
 /*---------------------------------------------------------------------------*/
