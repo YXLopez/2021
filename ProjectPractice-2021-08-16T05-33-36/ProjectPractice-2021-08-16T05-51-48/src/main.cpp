@@ -16,10 +16,11 @@ using namespace vex;
 
 // A global instance of competition
 competition Competition;
+vex::brain Brain;
 vex::controller Controller = vex::controller();
 vex::motor LeftTopMotor = vex::motor(vex::PORT1);
 vex::motor RightTopMotor = vex::motor(vex::PORT10);
-vex::motor LeftMogo = vex::motor(vex::PORT9 + PORT2);
+vex::motor MogoLift = vex::motor(vex::PORT2 + PORT9);
 // define your global instances of motors and other devices here
 
 /*---------------------------------------------------------------------------*/
@@ -75,6 +76,16 @@ void usercontrol(void) {
     LeftTopMotor.spin(vex::directionType::fwd, Controller.Axis3.position(), vex::velocityUnits::pct);
     RightTopMotor.spin(vex::directionType::fwd, Controller.Axis2.position(), vex::velocityUnits::pct);
     
+    if(Controller.ButtonR1.pressing()) {
+      MogoLift.spin(vex::directionType::fwd);
+    }
+    else if(Controller.ButtonR2.pressing()) {
+      MogoLift.spin(vex::directionType::rev);
+    }
+    else {
+      MogoLift.stop(vex::brakeType::brake);
+    }
+
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
