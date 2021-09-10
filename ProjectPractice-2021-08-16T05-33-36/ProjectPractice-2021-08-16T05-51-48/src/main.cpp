@@ -19,9 +19,10 @@ competition Competition;
 vex::brain Brain;
 vex::controller Controller = vex::controller();
 vex::motor LeftTopMotor = vex::motor(vex::PORT1);
-vex::motor RightTopMotor = vex::motor(vex::PORT10);
-vex::motor MogoL = vex::motor(vex::PORT2);
-vex::motor MogoR = vex::motor(vex::PORT9);
+vex::motor RightTopMotor = vex::motor(vex::PORT10, true );
+vex::motor MogoL = vex::motor(vex::PORT11, true);
+vex::motor MogoR = vex::motor(vex::PORT20);
+// receiver placed at port 18
 // define your global instances of motors and other devices here
 // fix the motor rev or not depending on placing of motors (add comma true)
 // ex: vex::motor MogoR = vex::motor(vex::PORT9, true ); to reverse motor itself
