@@ -20,8 +20,11 @@ vex::brain Brain;
 vex::controller Controller = vex::controller();
 vex::motor LeftTopMotor = vex::motor(vex::PORT1);
 vex::motor RightTopMotor = vex::motor(vex::PORT10);
-vex::motor MogoLift = vex::motor(vex::PORT2 + PORT9);
+vex::motor MogoL = vex::motor(vex::PORT2);
+vex::motor MogoR = vex::motor(vex::PORT9);
 // define your global instances of motors and other devices here
+// fix the motor rev or not depending on placing of motors (add comma true)
+// ex: vex::motor MogoR = vex::motor(vex::PORT9, true ); to reverse motor itself
 
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
@@ -77,13 +80,16 @@ void usercontrol(void) {
     RightTopMotor.spin(vex::directionType::fwd, Controller.Axis2.position(), vex::velocityUnits::pct);
     
     if(Controller.ButtonR1.pressing()) {
-      MogoLift.spin(vex::directionType::fwd);
+      MogoL.spin(vex::directionType::fwd);
+      MogoR.spin(vex::directionType::fwd);
     }
     else if(Controller.ButtonR2.pressing()) {
-      MogoLift.spin(vex::directionType::rev);
+      MogoL.spin(vex::directionType::rev);
+      MogoR.spin(vex::directionType::rev);
     }
     else {
-      MogoLift.stop(vex::brakeType::brake);
+      MogoL.stop(vex::brakeType::brake);
+      MogoR.stop(vex::brakeType::brake);
     }
 
     wait(20, msec); // Sleep the task for a short amount of time to
