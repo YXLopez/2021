@@ -16,7 +16,6 @@ using namespace vex;
 
 // A global instance of competition
 competition Competition;
-vex::brain Brain;
 vex::controller Controller = vex::controller();
 vex::motor LeftTopMotor = vex::motor(vex::PORT1);
 vex::motor RightTopMotor = vex::motor(vex::PORT10, true );
@@ -77,8 +76,8 @@ void usercontrol(void) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
-    LeftTopMotor.spin(vex::directionType::fwd, Controller.Axis3.position(), vex::velocityUnits::pct);
-    RightTopMotor.spin(vex::directionType::fwd, Controller.Axis2.position(), vex::velocityUnits::pct);
+    LeftTopMotor.spin(vex::directionType::rev, Controller.Axis3.position(), vex::velocityUnits::pct);
+    RightTopMotor.spin(vex::directionType::rev, Controller.Axis2.position(), vex::velocityUnits::pct);
     
     if(Controller.ButtonR1.pressing()) {
       MogoL.spin(vex::directionType::fwd);
