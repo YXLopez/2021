@@ -84,7 +84,6 @@ void usercontrol(void) {
     }
     else {
       mogo.stop(vex::brakeType::hold);
-      mogo.stop(vex::brakeType::hold);
     }
 
     wait(20, msec); // Sleep the task for a short amount of time to
