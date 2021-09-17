@@ -8,6 +8,12 @@
 /*----------------------------------------------------------------------------*/
 
 // ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// mogo                 motor_group   11, 20          
+// Controller1          controller                    
+// LeftDrive            motor         1               
+// RightDrive           motor         10              
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -16,15 +22,6 @@ using namespace vex;
 
 // A global instance of competition
 competition Competition;
-vex::controller Controller = vex::controller();
-vex::motor LeftTopMotor = vex::motor(vex::PORT1);
-vex::motor RightTopMotor = vex::motor(vex::PORT10, true );
-vex::motor MogoL = vex::motor(vex::PORT11, true);
-vex::motor MogoR = vex::motor(vex::PORT20);
-// receiver placed at port 18
-// define your global instances of motors and other devices here
-// fix the motor rev or not depending on placing of motors (add comma true)
-// ex: vex::motor MogoR = vex::motor(vex::PORT9, true ); to reverse motor itself
 
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
@@ -76,20 +73,18 @@ void usercontrol(void) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
-    LeftTopMotor.spin(vex::directionType::rev, Controller.Axis3.position(), vex::velocityUnits::pct);
-    RightTopMotor.spin(vex::directionType::rev, Controller.Axis2.position(), vex::velocityUnits::pct);
-    
-    if(Controller.ButtonR1.pressing()) {
-      MogoL.spin(vex::directionType::fwd);
-      MogoR.spin(vex::directionType::fwd);
+    LeftDrive.spin(vex::directionType::fwd, Controller1.Axis3.position(), vex::velocityUnits::pct);
+    RightDrive.spin(vex::directionType::fwd, Controller1.Axis2.position(), vex::velocityUnits::pct);
+
+    if(Controller1.ButtonR1.pressing()) {
+      mogo.spin(vex::directionType::fwd);
     }
-    else if(Controller.ButtonR2.pressing()) {
-      MogoL.spin(vex::directionType::rev);
-      MogoR.spin(vex::directionType::rev);
+    else if(Controller1.ButtonR2.pressing()) {
+      mogo.spin(vex::directionType::rev);
     }
     else {
-      MogoL.stop(vex::brakeType::brake);
-      MogoR.stop(vex::brakeType::brake);
+      mogo.stop(vex::brakeType::hold);
+      mogo.stop(vex::brakeType::hold);
     }
 
     wait(20, msec); // Sleep the task for a short amount of time to
