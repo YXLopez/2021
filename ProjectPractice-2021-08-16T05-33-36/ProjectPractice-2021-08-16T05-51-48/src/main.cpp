@@ -73,8 +73,8 @@ void usercontrol(void) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
-    LeftDrive.spin(vex::directionType::fwd, Controller1.Axis3.position(), vex::velocityUnits::pct);
-    RightDrive.spin(vex::directionType::fwd, Controller1.Axis2.position(), vex::velocityUnits::pct);
+    LeftDrive.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
+    RightDrive.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
 
     if(Controller1.ButtonR1.pressing()) {
       mogo.spin(vex::directionType::fwd);
