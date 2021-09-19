@@ -7,6 +7,7 @@ extern motor_group mogo;
 extern controller Controller1;
 extern motor LeftDrive;
 extern motor RightDrive;
+extern motor intake;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

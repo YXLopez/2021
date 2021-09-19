@@ -14,6 +14,7 @@
 // Controller1          controller                    
 // LeftDrive            motor         1               
 // RightDrive           motor         10              
+// intake               motor         4               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -84,6 +85,16 @@ void usercontrol(void) {
     }
     else {
       mogo.stop(vex::brakeType::hold);
+    }
+
+ if(Controller1.ButtonL1.pressing()) {
+      intake.spin(vex::directionType::fwd);
+    }
+    else if(Controller1.ButtonL2.pressing()) {
+      intake.spin(vex::directionType::rev);
+    }
+    else {
+      intake.stop(vex::brakeType::hold);
     }
 
     wait(20, msec); // Sleep the task for a short amount of time to

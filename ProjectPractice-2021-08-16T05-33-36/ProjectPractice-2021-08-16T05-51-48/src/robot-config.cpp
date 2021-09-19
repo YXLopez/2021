@@ -14,6 +14,7 @@ motor_group mogo = motor_group(mogoMotorA, mogoMotorB);
 controller Controller1 = controller(primary);
 motor LeftDrive = motor(PORT1, ratio36_1, false);
 motor RightDrive = motor(PORT10, ratio36_1, true);
+motor intake = motor(PORT4, ratio36_1, false);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
