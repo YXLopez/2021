@@ -12,8 +12,8 @@
 // [Name]               [Type]        [Port(s)]
 // mogo                 motor_group   11, 20          
 // Controller1          controller                    
-// LeftDrive            motor         1               
-// RightDrive           motor         10              
+// RightDrive           motor         1               
+// LeftDrive1           motor         10              
 // intake               motor         4               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
@@ -37,7 +37,6 @@ competition Competition;
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
-  mogo.setVelocity(75, velocityUnits::pct);
   // All activities that occur before the competition starts
   // Example: clearing encoders, setting servo positions, ...
 }
@@ -71,10 +70,11 @@ void autonomous(void) {
 void usercontrol(void) {
   // User control code here, inside the loop
   while (true) {
+     mogo.setVelocity(15, velocityUnits::pct);
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
-    LeftDrive.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
+    LeftDrive1.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
     RightDrive.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
 
     if(Controller1.ButtonR1.pressing()) {
