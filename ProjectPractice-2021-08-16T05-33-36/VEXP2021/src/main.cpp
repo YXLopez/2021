@@ -71,7 +71,7 @@ void usercontrol(void) {
   // User control code here, inside the loop
   while (true) {
      mogo.setVelocity(15, velocityUnits::pct);
-     intake.setVelocity(18, velocityUnits::pct);
+     intake.setVelocity(15, velocityUnits::pct);
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
