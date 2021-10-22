@@ -10,11 +10,12 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// mogo                 motor_group   9, 2            
 // Controller1          controller                    
 // RightDrive           motor         1               
 // LeftDrive1           motor         10              
 // intake               motor         4               
+// mogoL                motor         9               
+// mogoR                motor         2               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -70,7 +71,8 @@ void autonomous(void) {
 void usercontrol(void) {
   // User control code here, inside the loop
   while (true) {
-     mogo.setVelocity(15, velocityUnits::pct);
+     mogoL.setVelocity(15, velocityUnits::pct);
+     mogoR.setVelocity(15, velocityUnits::pct);
      intake.setVelocity(15, velocityUnits::pct);
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
@@ -79,13 +81,16 @@ void usercontrol(void) {
     RightDrive.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
 
     if(Controller1.ButtonR2.pressing()) {
-      mogo.spin(vex::directionType::fwd);
+      mogoL.spin(vex::directionType::fwd);
+      mogoR.spin(vex::directionType::fwd);
     }
     else if(Controller1.ButtonR1.pressing()) {
-      mogo.spin(vex::directionType::rev);
+      mogoL.spin(vex::directionType::rev);
+      mogoR.spin(vex::directionType::rev);
     }
     else {
-      mogo.stop(vex::brakeType::hold);
+      mogoL.stop(vex::brakeType::hold);
+      mogoR.stop(vex::brakeType::hold);
     }
 
  if(Controller1.ButtonL1.pressing()) {
