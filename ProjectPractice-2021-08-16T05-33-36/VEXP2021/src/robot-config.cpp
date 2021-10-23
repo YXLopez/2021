@@ -12,8 +12,8 @@ controller Controller1 = controller(primary);
 motor RightDrive = motor(PORT1, ratio36_1, true);
 motor LeftDrive1 = motor(PORT10, ratio36_1, false);
 motor intake = motor(PORT4, ratio36_1, false);
-motor mogoL = motor(PORT9, ratio18_1, true);
-motor mogoR = motor(PORT2, ratio18_1, false);
+motor mogoL = motor(PORT9, ratio36_1, true);
+motor mogoR = motor(PORT2, ratio36_1, false);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable
