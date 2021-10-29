@@ -39,7 +39,7 @@ void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   // All activities that occur before the competition starts
-  // Example: clearing encoders, setting servo positions, ...
+  // Example: clearing encoders, setting servo positions, ....
 }
 
 /*---------------------------------------------------------------------------*/
@@ -53,10 +53,34 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
+  // LeftDrive1.spinFor(forward, 2, turns);
+  // RightDrive.spinFor(forward, 2, turns);
+
+  // vex::task::sleep(500);
+
+  // LeftDrive1.spinFor(reverse, 90, degrees);
+  // RightDrive.spinFor(forward, 90, degrees);
+
+  // vex::task::sleep(500);
+ 
+  // LeftDrive1.spinFor(forward, 5, turns);
+  // RightDrive.spinFor(forward, 5, turns);
+
+  // vex::task::sleep(500);
+
+  // mogoL.spinFor(reverse, 3, turns);
+  // mogoR.spinFor(reverse, 3, turns);
+
+  // vex::task::sleep(500);
+
+  // LeftDrive1.spinFor(reverse, 3, turns);
+  // RightDrive.spinFor(reverse, 3, turns);  
+
+  // vex::task::sleep(500);
+  }
   // ..........................................................................
   // Insert autonomous user code here.
   // ..........................................................................
-}
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
@@ -73,7 +97,7 @@ void usercontrol(void) {
   while (true) {
      mogoL.setVelocity(15, velocityUnits::pct);
      mogoR.setVelocity(15, velocityUnits::pct);
-     intake.setVelocity(20, velocityUnits::pct);
+     intake.setVelocity(15, velocityUnits::pct);
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
@@ -93,16 +117,15 @@ void usercontrol(void) {
       mogoR.stop(vex::brakeType::hold);
     }
 
- if(Controller1.ButtonL1.pressing()) {
+    if(Controller1.ButtonL1.pressing()) {
       intake.spin(vex::directionType::fwd);
     }
     else if(Controller1.ButtonL2.pressing()) {
       intake.spin(vex::directionType::rev);
     }
-    else {
-      intake.stop(vex::brakeType::hold);
+     else {
+      intake.stop(vex::brakeType::brake);
     }
-
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
